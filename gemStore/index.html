@@ -3,10 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ejercicio 1</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/gemStore.js"></script>
 </head>
-<body>
-	{{ "HOLA MUNDO!" }}
+<body ng-controller="StoreController as store">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				{{store.product.name}}
+				<em>{{store.product.price}}</em>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>
