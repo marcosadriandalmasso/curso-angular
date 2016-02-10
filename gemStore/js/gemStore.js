@@ -1,15 +1,19 @@
 (function() {
-    var gem = { name: 'Azurite', price: 2.95, canPurchase: false, soldOut: false };
+    var gems = [
+      { name: 'Azurite', price: 2.95, canPurchase: false, soldOut: false  },
+      { name: 'Bloodstone', price: 5.95, canPurchase: false, soldOut: false  },
+      { name: 'Zircon', price: 3.95, canPurchase: false, soldOut: false  },
+    ];
     
     angular
         .module('gemStore', [])
         .controller('StoreController', function($log) {
-            this.product = gem;
+            this.products = gems;
             this.purchase = purchase;
 
-            function purchase() {
-            	$log.warn('StoreController.purchase NOT_IMPLEMENTED');
+            function purchase(product) {
+            	$log.warn('StoreController.purchase NOT_IMPLEMENTED. Trying to buy %s', product.name);
             }
         });
     
-})()
+})();
