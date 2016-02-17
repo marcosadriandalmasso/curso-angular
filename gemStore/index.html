@@ -25,17 +25,17 @@
 	<div class="container">
 		<div ng-repeat="product in store.products" ng-hide="product.soldOut">
 			<div class="row" ng-if="product.images.length">
-				<div class="col-md-2">
+				<div class="col-md-2" ng-controller="GalleryController as gallery">
 					<div class="product well text-center">
 						<div class="row">
 							<div class="col-md-12">
-								<img class="img-thumbnail" ng-src="{{product.images[0]}}" >
+								<img class="img-thumbnail" ng-src="{{product.images[gallery.current]}}">
 							</div>
 						</div>
 						<div class="row">
 							<ul class="listPreview">
 								<li ng-repeat="image in product.images">
-									<img class="img-thumbnail" ng-src="{{ image }}" width="30%" >
+									<img class="img-thumbnail" ng-src="{{ image }}" ng-click="gallery.setCurrent($index)" width="30%" >
 								</li>
 							</ul>
 						</div>

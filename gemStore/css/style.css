@@ -13,4 +13,9 @@ body {
 .listPreview li {
 	list-style: none;
 	display: inline;
+	cursor: pointer;
+}
+
+.listPreview li img:hover {
+	transform: scale(1.1);
 }
