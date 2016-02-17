@@ -2,15 +2,31 @@
 <html ng-app="gemStore">
 <head>
 	<meta charset="UTF-8">
-	<title>Ejercicio 4</title>
+	<title>Clase 2 | Ejercicio 2</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="StoreController as store">
+	<header>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">GemStore</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#">Quienes somos</a></li>
+					<li class="active"><a href="#">Productos</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 	<div class="container">
-		<div class="products">
+		<div ng-repeat="product in store.products" ng-hide="product.soldOut">
 			<div class="row">
-				<div class="col-md-12" ng-repeat="product in store.products" ng-hide="product.soldOut">
-					{{product.name}} <em>${{product.price}}</em>
+				<div class="product well text-center">
+					{{product.name}} <em>{{product.price | currency}}</em>
 					<button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
 				</div>
 			</div>
@@ -20,5 +36,6 @@
 	<script type="text/javascript" src="js/gemStore.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/angular-locale_es-ar.js"></script>
 </body>
 </html>
