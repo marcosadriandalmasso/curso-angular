@@ -26,6 +26,12 @@
 		<div ng-repeat="product in store.products" ng-hide="product.soldOut">
 			<div class="row">
 				<div class="product well text-center">
+					<div class="row">
+						<div class="col-md-12">
+							<img class="img-thumbnail" ng-src="{{product.images[0]}}" >
+							
+						</div>
+					</div>
 					{{product.name}} <em>{{product.price | currency}}</em>
 					<button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
 				</div>
