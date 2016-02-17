@@ -24,7 +24,7 @@
 	</header>
 	<div class="container">
 		<div ng-repeat="product in store.products" ng-hide="product.soldOut">
-			<div class="row">
+			<div class="row" ng-if="product.images.length">
 				<div class="product well text-center">
 					<div class="row">
 						<div class="col-md-12">
