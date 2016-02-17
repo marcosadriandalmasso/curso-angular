@@ -25,22 +25,53 @@
 	<div class="container">
 		<div ng-repeat="product in store.products" ng-hide="product.soldOut">
 			<div class="row" ng-if="product.images.length">
-				<div class="product well text-center">
-					<div class="row">
-						<div class="col-md-12">
-							<img class="img-thumbnail" ng-src="{{product.images[0]}}" >
-							
+				<div class="col-md-2">
+					<div class="product well text-center">
+						<div class="row">
+							<div class="col-md-12">
+								<img class="img-thumbnail" ng-src="{{product.images[0]}}" >
+							</div>
 						</div>
+						<div class="row">
+							<ul class="listPreview">
+								<li ng-repeat="image in product.images">
+									<img class="img-thumbnail" ng-src="{{ image }}" width="30%" >
+								</li>
+							</ul>
+						</div>
+						{{product.name}} <em>{{product.price | currency}}</em>
+						<button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
 					</div>
-					<div class="row">
-						<ul class="listPreview">
-							<li ng-repeat="image in product.images">
-								<img class="img-thumbnail" ng-src="{{ image }}" width="30%" >
-							</li>
-						</ul>
-					</div>
-					{{product.name}} <em>{{product.price | currency}}</em>
-					<button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
+				</div>
+				<div class="col-md-10">
+					<section class="tab" ng-controller="TabController as tab">
+	                    <ul class="nav nav-tabs">
+	                        <li ng-class="{ active: tab.isSet(1) }">
+	                            <a href ng-click="tab.setTab(1)">Description</a>
+	                        </li>
+	                        <li ng-class="{ active: tab.isSet(2) }">
+	                            <a href ng-click="tab.setTab(2)">Specs</a>
+	                        </li>
+	                        <li ng-class="{ active: tab.isSet(3) }">
+	                            <a href ng-click="tab.setTab(3)">Reviews</a>
+	                        </li>
+	                    </ul>
+	                    
+	                    <div ng-show="tab.isSet(1)">
+	                        <h4>Description</h4>
+	                        <blockquote>{{ product.description }}</blockquote>
+	                    </div>
+	                    
+	                    <div ng-show="tab.isSet(2)">
+	                        <h4>Specs</h4>
+	                        <blockquote>Shine: {{product.shine}}</blockquote>
+	                    </div>
+	                    
+	                    <div ng-show="tab.isSet(3)">
+	                        <h4>Reviews</h4>
+	                        <blockquote></blockquote>
+	                    </div>
+	                </section>
 				</div>
 			</div>
 		</div>
