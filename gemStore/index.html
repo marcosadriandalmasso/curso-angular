@@ -32,6 +32,13 @@
 							
 						</div>
 					</div>
+					<div class="row">
+						<ul class="listPreview">
+							<li ng-repeat="image in product.images">
+								<img class="img-thumbnail" ng-src="{{ image }}" width="30%" >
+							</li>
+						</ul>
+					</div>
 					{{product.name}} <em>{{product.price | currency}}</em>
 					<button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
 				</div>
