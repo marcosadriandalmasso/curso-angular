@@ -25,7 +25,7 @@
 	<div class="container">
 		<div ng-repeat="product in store.products" ng-hide="product.soldOut">
 			<div class="row" ng-if="product.images.length">
-				<div class="col-md-2" ng-controller="GalleryController as gallery">
+				<div class="col-md-3" ng-controller="GalleryController as gallery">
 					<div class="product well text-center">
 						<div class="row">
 							<div class="col-md-12">
@@ -35,15 +35,15 @@
 						<div class="row">
 							<ul class="listPreview">
 								<li ng-repeat="image in product.images">
-									<img class="img-thumbnail" ng-src="{{ image }}" ng-click="gallery.setCurrent($index)" width="30%" >
+									<img class="img-thumbnail" ng-src="{{ image }}" ng-click="gallery.setCurrent($index)" width="30%" > <!-- $index es el index del ng-repeat -->
 								</li>
 							</ul>
 						</div>
-						{{product.name}} <em>{{product.price | currency}}</em>
+						<h4>{{product.name}} <em>{{product.price | currency}}</em></h4>
 						<button ng-show="product.canPurchase" ng-click="store.purchase(product)">Add to cart!</button>
 					</div>
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-9">
 					<section class="tab" ng-controller="TabController as tab">
 	                    <ul class="nav nav-tabs">
 	                        <li ng-class="{ active: tab.isSet(1) }">
@@ -69,7 +69,11 @@
 	                    
 	                    <div ng-show="tab.isSet(3)">
 	                        <h4>Reviews</h4>
-	                        <blockquote></blockquote>
+	                        <div class="reviews" ng-repeat="review in product.reviews">
+	                        	<img src="images/star.jpg" width="15px">&nbsp;<strong>{{ review.stars }}</strong>
+                        		<p><strong>Autor:</strong> <em>{{ review.author }}</em></p>
+	                        	<p><strong>Review:</strong> <em>{{ review.body }}</p></em>
+	                        </div>
 	                    </div>
 	                </section>
 				</div>
