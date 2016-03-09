@@ -73,7 +73,7 @@
 		                        	<h4>Reviews</h4>
 			                        <div class="reviews" ng-repeat="review in product.reviews">
 			                        	<strong>{{ review.stars }}</strong><img src="images/star.png" width="15px">
-		                        		<p><strong>Author:</strong> <em>{{ review.author }}</em></p>
+		                        		<p><strong>Author:</strong> <em>{{ review.author }} on {{review.createdOn | date:'dd/MM/yyyy'}}</em></p>
 			                        	<p><strong>Review:</strong> <em>{{ review.body }}</p></em>
 			                        </div>
 	                    		</div>

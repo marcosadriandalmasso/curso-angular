@@ -19,6 +19,7 @@
         };
 
         function addReview(product) {
+        	vm.review.createdOn = Date.now();
             product.reviews.push(vm.review);
             reset();
             return true;
