@@ -21,6 +21,7 @@
         function addReview(product) {
             product.reviews.push(vm.review);
             reset();
+            return true;
         }
     }
 
