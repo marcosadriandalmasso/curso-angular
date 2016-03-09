@@ -57,8 +57,8 @@
 	                        </li>
 	                    </ul>
 	                    
-	                    <div ng-show="tab.isSet(1)" ng-include="'productDescription.html'"></div>
-	                    
+	                    <product-description ng-show="tab.isSet(1)"></product-description>
+
 	                    <div ng-show="tab.isSet(2)">
 	                        <h4>Specs</h4>
 	                        <blockquote>Shine: {{product.shine}}</blockquote>
@@ -123,5 +123,6 @@
 	<script type="text/javascript" src="js/tabController.js"></script>
 	<script type="text/javascript" src="js/galleryController.js"></script>
 	<script type="text/javascript" src="js/reviewController.js"></script>
+	<script type="text/javascript" src="js/productDescriptionDirective.js"></script>
 </body>
 </html>
