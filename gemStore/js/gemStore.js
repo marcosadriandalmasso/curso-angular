@@ -9,9 +9,9 @@
         color: '#CCC',
         faces: 14,
         images: [
-          // "images/gem-02.gif",
-          // "images/gem-05.gif",
-          // "images/gem-09.gif"
+          "images/gem-02.gif",
+          "images/gem-05.gif",
+          "images/gem-09.gif"
         ],
         reviews: [{
             stars: 5,
