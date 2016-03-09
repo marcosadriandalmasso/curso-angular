@@ -78,37 +78,38 @@
 			                        </div>
 	                    		</div>
 	                    		<div class="col-md-4">
-	                    			<form name="submitReview">
+	                    			<form ng-controller="reviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)" name="submitReview">
 	                    				<p>Rate this product</p>
 	                    				<fieldset class="form-group">
-											<select ng-model="review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" name="stars">
+											<select ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" name="stars">
 												<option value="">Rate the Product</option>
 											</select>
 										</fieldset>
 										<fieldset class="form-group">
-											<input ng-model="review.author" type="email" class="form-control" placeholder="name@domain.com" title="email" name="author"/>
+											<input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="name@domain.com" title="email" name="author"/>
 										</fieldset>
 										<fieldset class="form-group">
-											<textarea ng-model="review.body" class="form-control" placeholder="Describe your review..." title="Review" name="review"></textarea>
+											<textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Describe your review..." title="Review" name="review"></textarea>
 										</fieldset>
 										<fieldset class="form-group">
 											<input type="submit" class="btn btn-primary" value="Submit Review" />
 										</fieldset>
+	                    			
+		                    			<div ng-show="submitReview.$dirty">
+			                    			<h4>Preview</h4>
+			                    			<div class="reviews">
+												<div ng-show="submitReview.stars.$dirty">
+													<strong>{{ reviewCtrl.review.stars }}</strong><img src="images/star.png" width="15px">
+												</div>
+				                        		<div ng-show="submitReview.author.$dirty">
+				                        			<p><strong>Author:</strong> <em>{{ reviewCtrl.review.author }}</em></p>
+				                        		</div>
+				                        		<div ng-show="submitReview.review.$dirty">
+				                        			<p><strong>Review:</strong> <em>{{ reviewCtrl.review.body }}</em></p>
+				                        		</div>
+				                        	</div>
+		                    			</div>
 	                    			</form>
-	                    			<div ng-show="submitReview.$dirty">
-		                    			<h4>Preview</h4>
-		                    			<div class="reviews">
-											<div ng-show="submitReview.stars.$dirty">
-												<strong>{{ review.stars }}</strong><img src="images/star.png" width="15px">
-											</div>
-			                        		<div ng-show="submitReview.author.$dirty">
-			                        			<p><strong>Author:</strong> <em>{{ review.author }}</em></p>
-			                        		</div>
-			                        		<div ng-show="submitReview.review.$dirty">
-			                        			<p><strong>Review:</strong> <em>{{ review.body }}</em></p>
-			                        		</div>
-			                        	</div>
-	                    			</div>
 	                    		</div>
 	                    	</div>
 	                    </div>
