@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="col-md-8">
+    	<h4>Reviews</h4>
+        <div class="reviews" ng-repeat="review in product.reviews">
+        	<strong>{{ review.stars }}</strong><img src="images/star.png" width="15px">
+    		<p><strong>Author:</strong> <em>{{ review.author }} on {{review.createdOn | date:'dd/MM/yyyy'}}</em></p>
+        	<p><strong>Review:</strong> <em>{{ review.body }}</em></p>
+        </div>
+	</div>
+	<div class="col-md-4">
+		<form ng-controller="reviewController as reviewCtrl" ng-submit="submitReviewForm.$valid && reviewCtrl.addReview(product) && submitReviewForm.$setPristine()" name="submitReviewForm" novalidate>
+			<p>Rate this product</p>
+			<fieldset class="form-group" ng-class="{'has-error': submitReviewForm.stars.$dirty && submitReviewForm.stars.$invalid}">
+				<select ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" name="stars" required>
+					<option value="">Rate the Product</option>
+				</select>
+			</fieldset>
+			<fieldset class="form-group" ng-class="{'has-error': submitReviewForm.author.$dirty && submitReviewForm.author.$invalid}">
+				<input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="name@domain.com" title="email" name="author" required/>
+			</fieldset>
+			<fieldset class="form-group">
+				<textarea ng-model="reviewCtrl.review.body" class="form-control" ng-class="{'has-error': submitReviewForm.review.$dirty && submitReviewForm.review.$invalid}" placeholder="Describe your review..." title="Review" name="review" required></textarea>
+			</fieldset>
+			<fieldset class="form-group">
+				<input type="submit" class="btn btn-primary" ng-class="submitReviewForm.$dirty && submitReviewForm.$invalid ? 'btn-danger' : 'btn-primary'" value="Submit Review" />
+			</fieldset>
+		
+			<div ng-show="submitReviewForm.$dirty">
+    			<h4>Preview</h4>
+    			<div class="reviews">
+					<div ng-show="submitReviewForm.stars.$dirty">
+						<strong>{{ reviewCtrl.review.stars }}</strong><img src="images/star.png" width="15px">
+					</div>
+            		<div ng-show="submitReviewForm.author.$dirty">
+            			<p><strong>Author:</strong> <em>{{ reviewCtrl.review.author }}</em></p>
+            		</div>
+            		<div ng-show="submitReviewForm.review.$dirty">
+            			<p><strong>Review:</strong> <em>{{ reviewCtrl.review.body }}</em></p>
+            		</div>
+            	</div>
+			</div>
+		</form>
+	</div>
+</div>
